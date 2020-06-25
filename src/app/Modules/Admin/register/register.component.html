@@ -1,0 +1,33 @@
+<h1 mat-dialog-tittle align="center">¡Es hora de Registrarse!</h1>
+<mat-dialog-content>
+    <form class="form-horizontal" [formGroup]="dataForm" novalidate>
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Correo</mat-label>
+                <input matInput formControlName="user" type="text" placeholder="mail@ejemplo.com" required autofocus>
+                <mat-error *ngIf="dataForm.get('user').errors">{{error}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="pass" placeholder="Contraseña" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Confirmar Contraseña</mat-label>
+                <input matInput type="password" formControlName="confirmPass" placeholder="Contraseña" required>
+                <mat-error *ngIf="dataForm.get('confirmPass').errors">Las contraseñas son diferentes!</mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<div mat-dialog-actions align="center">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 action">
+                <button type="button" class="btn btn-light" mat-dialog-close>Cancelar</button>
+            </div>
+            <div class="col-6 action">
+                <button type="button" class="btn btn-success" (click)="register()">¡Registrarse!</button>
+            </div>
+        </div>
+    </div>
+</div>

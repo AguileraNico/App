@@ -1,0 +1,19 @@
+<nav class="navbar navbar-dark bg-dark">
+  <ul class="nav">
+    <li class="nav-item" *ngIf="islogged()">
+      <button mat-button class="subHeader">Mis Pronosticos</button>
+    </li>
+    <li class="nav-item">
+      <button mat-button [matMenuTriggerFor]="menu"  class="subHeader">Ligas</button>
+      <mat-menu #menu="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/liga">Liga Argentina</button>
+      </mat-menu>
+    </li>
+    <li class="nav-item">
+      <button mat-button class="subHeader" routerLink="/resultados">Resultados</button>
+    </li>
+    <li class="nav-item">
+      <button mat-button class="subHeader">Contacto</button>
+    </li>
+  </ul>
+</nav> 

@@ -1,0 +1,15 @@
+.navbar {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.subHeader {
+    color: white;
+    &:hover {
+        color: grey !important;
+    }
+}
+
+button:focus {
+    outline: none;
+}

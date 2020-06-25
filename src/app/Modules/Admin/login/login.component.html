@@ -1,0 +1,40 @@
+<h1 mat-dialog-title align="center">Iniciar Sesion</h1>
+<mat-dialog-content>
+<form class="form-horizontal" [formGroup]="dataForm" novalidate>
+  <div class="form-group">
+    <mat-form-field appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input matInput formControlName="user" type="text" placeholder="mail@ejemplo.com" required autofocus>
+      <mat-error *ngIf="dataForm.get('user').errors">{{error}}</mat-error>
+      <mat-error *ngIf="dataForm.get('user').errors && !dataForm.get('user').errors.required">
+        Ingrese un mail valido!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="pass" type="password" placeholder="Contraseña" required>
+      <mat-error *ngIf="dataForm.get('pass').errors">{{error}}</mat-error>
+    </mat-form-field>
+  </div>
+</form>
+  <p>
+    ¿Olvidaste tu contraseña? Hace
+    <a id="link-1" href (click)="resetPassword()">click acá</a>
+  </p>
+</mat-dialog-content>
+<div mat-dialog-actions align="center">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 action">
+        <button type="button" class="btn btn-light btn-block" mat-dialog-close>Cancelar</button>
+      </div>
+      <div class="col-6 action">
+        <button type="button" class="btn btn-success btn-block" (click)="login()">Entrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div mat-dialog-actions align="center">
+  <button type="button" class="btn btn-outline-secondary btn-block" [mat-dialog-close]="false">¡Registrate Ahora!</button>
+</div>

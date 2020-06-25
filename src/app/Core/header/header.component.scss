@@ -1,0 +1,24 @@
+button:focus {
+    outline: none;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 210px;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 70px;
+  outline:none;
+}
+
+.header {
+    margin: 0px;
+}
+
+.login {
+    margin-right: 10px;
+}
