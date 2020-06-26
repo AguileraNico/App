@@ -1,5 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from '../Shared/page-not-found/page-not-found.component';
+import { LoggedService } from './logged/logged.service';
 
 
 const routes: Routes = [
@@ -10,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('../Modules/Admin/admin.module').then(mod => mod.AdminModule)
+    loadChildren: () => import('../Modules/Admin/admin.module').then(mod => mod.AdminModule),
+    canActivate: [LoggedService]
   },
   {
     path: 'home',
@@ -22,7 +25,17 @@ const routes: Routes = [
   },
   {
     path: 'liga',
-    loadChildren: () => import('../Modules/Liga/liga.module').then(mod => mod.LigaModule)
+    loadChildren: () => import('../Modules/Liga/liga.module').then(mod => mod.LigaModule),
+    canActivate: [LoggedService]
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('../Modules/profile/profile.module').then(mod => mod.ProfileModule),
+    canActivate: [LoggedService]
+  },
+  {
+    path: 'not-found',
+    component: PageNotFoundComponent,
   },
   {
     path: '**',

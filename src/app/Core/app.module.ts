@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { SharedModule } from '../Shared/shared.module';
 import { MaterialModule } from '../Modules/Material/material.module';
 import { SubHeaderComponent } from './sub-header/sub-header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SubHeaderComponent } from './sub-header/sub-header.component';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

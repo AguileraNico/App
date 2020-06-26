@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/Modules/Admin/login/login.component';
 import { RegisterComponent } from 'src/app/Modules/Admin/register/register.component';
+import { LoginService } from 'src/app/Services/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
 
   notCount: number;
 
-  constructor(private auth: AuthService, public dialog: MatDialog) { }
+  constructor(private auth: AuthService, public dialog: MatDialog,
+              private service: LoginService) { }
 
   ngOnInit(): void {
   }
@@ -23,16 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   setLogin(): void {
-    const dialogRef = this.dialog.open(LoginComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      switch (result) {
-        case false: {
-          this.register();
-          break;
-        }
-        case undefined: break;
-      }
-    });
+    this.service.login();
   }
 
   logout(): void {
@@ -40,11 +33,6 @@ export class HeaderComponent implements OnInit {
   }
 
   register(): void {
-   const dialogRef = this.dialog.open(RegisterComponent);
-   dialogRef.afterClosed().subscribe(result => {
-     if (result) {
-        this.auth.register(result.user, result.pass);
-     }
-   });
+   this.service.register();
   }
 }

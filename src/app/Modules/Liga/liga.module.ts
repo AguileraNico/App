@@ -4,6 +4,7 @@ import { LigaComponent } from '../liga/liga.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../Material/material.module';
 import { SharedModule } from 'src/app/Shared/shared.module';
+import { TeamsService } from 'src/app/Services/Teams/teams.service';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     MaterialModule,
     RouterModule.forChild(routes)
   ],
+  providers: [TeamsService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LigaModule { }
