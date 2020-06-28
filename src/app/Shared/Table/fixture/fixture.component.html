@@ -1,12 +1,58 @@
 <table class="table table-sm table-bordered">
     <thead>
         <tr>
-            <th colspan="3">Liga</th>
+            <th colspan="5">Viernes</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let row of rows">
-            <td *ngFor="let key of keys">{{readProperties(row, key)}}</td>
+            <td>{{readProperties(row, 'hora')}}</td>
+            <td>{{readProperties(row, 'local')}}</td>
+            <td class="result" contenteditable='true'></td>
+            <td class="result" contenteditable='true'></td>
+            <td>{{readProperties(row, 'visitante')}}</td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th colspan="5">Sabado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of rows">
+            <td>{{readProperties(row, 'hora')}}</td>
+            <td>{{readProperties(row, 'local')}}</td>
+            <td class="result" contenteditable='true'></td>
+            <td class="result" contenteditable='true'></td>
+            <td>{{readProperties(row, 'visitante')}}</td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th colspan="5">Domingo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of rows">
+            <td>{{readProperties(row, 'hora')}}</td>
+            <td>{{readProperties(row, 'local')}}</td>
+            <td class="result" contenteditable='true'></td>
+            <td class="result" contenteditable='true'></td>
+            <td>{{readProperties(row, 'visitante')}}</td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th colspan="5">Lunes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of rows">
+            <td>{{readProperties(row, 'hora')}}</td>
+            <td>{{readProperties(row, 'local')}}</td>
+            <td class="result" contenteditable='true'></td>
+            <td class="result" contenteditable='true'></td>
+            <td>{{readProperties(row, 'visitante')}}</td>
         </tr>
     </tbody>
 </table>

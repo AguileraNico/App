@@ -29,11 +29,6 @@ const routes: Routes = [
     canActivate: [LoggedService]
   },
   {
-    path: 'profile',
-    loadChildren: () => import('../Modules/profile/profile.module').then(mod => mod.ProfileModule),
-    canActivate: [LoggedService]
-  },
-  {
     path: 'not-found',
     component: PageNotFoundComponent,
   },

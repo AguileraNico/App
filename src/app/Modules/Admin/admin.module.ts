@@ -8,16 +8,29 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { SharedModule } from 'src/app/Shared/shared.module';
 import { MaterialModule } from '../Material/material.module';
+import { ProfileComponent } from './Profile/profile.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'profile',
+        pathMatch: 'full'
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
+      }
+    ]
   }
 ];
 
 @NgModule({
   declarations: [
+    ProfileComponent,
     AdminComponent,
     LoginComponent,
     RegisterComponent,

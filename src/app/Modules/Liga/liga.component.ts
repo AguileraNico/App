@@ -13,10 +13,12 @@ export class LigaComponent implements OnInit {
   constructor(private service: TeamsService) { }
 
   ngOnInit(): void {
+    /*
     this.service.getTeams().subscribe(value => {
       this.teams = value;
       console.log(this.teams);
     })
+    */
   }
 
 }
