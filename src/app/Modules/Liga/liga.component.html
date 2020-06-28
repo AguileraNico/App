@@ -1,14 +1,18 @@
 <div class="container row">
-        <div class="col-3">
-            <div class="card d-flex align-items-center">
-                <div class="card-body">
-                    <p class="card-title">Hola</p>
-                </div>
-            </div>
+    <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-positions" role="tab">Posiciones</a>
+          <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-fixture" role="tab">Fixture</a>
+          <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-promedios" role="tab">Promedios</a>
+          <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-teams" role="tab">Equipos</a>
         </div>
-        <div class="col-9">
-            <div class="container">
-                <app-table></app-table>
-            </div>
+      </div>
+      <div class="col-8 container">
+        <div class="tab-content row justify-content-md-center" id="nav-tabContent">
+          <app-positions class="tab-pane fade show active" id="list-positions" role="tabpanel"></app-positions>
+          <app-fixture class="tab-pane fade" id="list-fixture" role="tabpanel">...</app-fixture>
+          <app-positions class="tab-pane fade" id="list-promedios" role="tabpanel">...</app-positions>
+          <div class="tab-pane fade" id="list-teams" role="tabpanel">...</div>
         </div>
+      </div>
 </div>
