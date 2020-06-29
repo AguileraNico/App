@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table-fixture',
@@ -6,18 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-fixture.component.scss']
 })
 export class TableFixtureComponent implements OnInit {
-  keys: string[] = ['hora', 'local', 'visitante'];
-  rows: any = [
-    {hora:'14:30', local:'Gimnasia y Esgrima La Plata', visitante:'boca'},
-    {hora:'20:00', local:'River', visitante:'Racing'},
-  ]
+  keys: string[];
+  @Input() rows: any[];
+  @Input() editable: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  readProperties(obj, path): string {
-    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+    // tslint:disable-next-line: only-arrow-functions
+    this.keys = [...new Set<string>(this.rows.map( function(value) {return value.dia; }))];
   }
 }

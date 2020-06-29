@@ -3,5 +3,25 @@ th,td {
 }
 
 .result {
+    width: 20px;
+}
+
+.resultReadonly {
     width: 30px;
+}
+
+input {
+    border: 0px;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

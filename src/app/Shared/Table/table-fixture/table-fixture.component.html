@@ -1,58 +1,26 @@
 <table class="table table-sm table-bordered">
-    <thead>
-        <tr>
-            <th colspan="5">Viernes</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let row of rows">
-            <td>{{readProperties(row, 'hora')}}</td>
-            <td>{{readProperties(row, 'local')}}</td>
-            <td class="result" contenteditable='true'></td>
-            <td class="result" contenteditable='true'></td>
-            <td>{{readProperties(row, 'visitante')}}</td>
-        </tr>
-    </tbody>
-    <thead>
-        <tr>
-            <th colspan="5">Sabado</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let row of rows">
-            <td>{{readProperties(row, 'hora')}}</td>
-            <td>{{readProperties(row, 'local')}}</td>
-            <td class="result" contenteditable='true'></td>
-            <td class="result" contenteditable='true'></td>
-            <td>{{readProperties(row, 'visitante')}}</td>
-        </tr>
-    </tbody>
-    <thead>
-        <tr>
-            <th colspan="5">Domingo</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let row of rows">
-            <td>{{readProperties(row, 'hora')}}</td>
-            <td>{{readProperties(row, 'local')}}</td>
-            <td class="result" contenteditable='true'></td>
-            <td class="result" contenteditable='true'></td>
-            <td>{{readProperties(row, 'visitante')}}</td>
-        </tr>
-    </tbody>
-    <thead>
-        <tr>
-            <th colspan="5">Lunes</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let row of rows">
-            <td>{{readProperties(row, 'hora')}}</td>
-            <td>{{readProperties(row, 'local')}}</td>
-            <td class="result" contenteditable='true'></td>
-            <td class="result" contenteditable='true'></td>
-            <td>{{readProperties(row, 'visitante')}}</td>
-        </tr>
-    </tbody>
+    <ng-container *ngFor="let key of keys">
+        <thead>
+            <tr>
+                <th colspan="5">{{ key }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of rows">
+                <ng-container *ngIf="row.dia == key">
+                    <td>{{row.hora}}</td>
+                    <td>{{row.local}}</td>
+                    <td *ngIf="editable" class="result">
+                        <input [(ngModel)]="row.localGoal" type="number" class="result">
+                    </td>
+                    <td *ngIf="editable" class="result">
+                        <input [(ngModel)]="row.visitorGoal" type="number" class="result">
+                    </td>
+                    <td *ngIf="!editable" class="resultReadonly">{{row.localGoal}}</td>
+                    <td *ngIf="!editable" class="resultReadonly">{{row.visitorGoal}}</td>
+                    <td>{{row.visitante}}</td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </ng-container>
 </table>
