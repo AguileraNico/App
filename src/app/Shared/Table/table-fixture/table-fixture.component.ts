@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-fixture',
-  templateUrl: './fixture.component.html',
-  styleUrls: ['./fixture.component.scss']
+  selector: 'app-table-fixture',
+  templateUrl: './table-fixture.component.html',
+  styleUrls: ['./table-fixture.component.scss']
 })
-export class FixtureComponent implements OnInit {
+export class TableFixtureComponent implements OnInit {
   keys: string[] = ['hora', 'local', 'visitante'];
   rows: any = [
     {hora:'14:30', local:'Gimnasia y Esgrima La Plata', visitante:'boca'},

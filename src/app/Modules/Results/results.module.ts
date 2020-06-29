@@ -1,18 +1,18 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResultadosComponent } from '../resultados/resultados.component';
+import { ResultsComponent } from './results.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/Shared/shared.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: ResultadosComponent
+    component: ResultsComponent
   }
 ];
 
 @NgModule({
-  declarations: [ResultadosComponent],
+  declarations: [ResultsComponent],
   imports: [
     SharedModule,
     CommonModule,
@@ -20,4 +20,4 @@ const routes: Routes = [
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ResultadosModule { }
+export class ResultsModule { }

@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableComponent } from './Table/positions/table.component';
+import { TablePositionsComponent } from './Table/table-positions/table-positions.component';
 import { MaterialModule } from '../Modules/Material/material.module';
-import { FixtureComponent } from './table/fixture/fixture.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TableFixtureComponent } from './Table/table-fixture/table-fixture.component';
 
 
 
 @NgModule({
-  declarations: [TableComponent, FixtureComponent],
+  declarations: [TablePositionsComponent, TableFixtureComponent],
   imports: [
     MaterialModule,
     CommonModule
   ],
   exports: [
-    TableComponent,
-    FixtureComponent
+    TablePositionsComponent,
+    TableFixtureComponent
   ]
 })
 
