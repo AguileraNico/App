@@ -4,7 +4,7 @@ import { LigaComponent } from '../liga/liga.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../Material/material.module';
 import { SharedModule } from 'src/app/Shared/shared.module';
-import { TeamsService } from 'src/app/Services/Teams/teams.service';
+import { LigaService } from 'src/app/Services/Liga/liga.service';
 import { PositionsComponent } from './positions/positions.component';
 import { FixtureComponent } from './fixture/fixture.component';
 import { PromediosComponent } from './promedios/promedios.component';
@@ -54,7 +54,7 @@ const routes: Routes = [
     MaterialModule,
     RouterModule.forChild(routes)
   ],
-  providers: [TeamsService],
+  providers: [LigaService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LigaModule { }

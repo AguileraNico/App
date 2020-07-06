@@ -15,4 +15,5 @@ export class SubHeaderComponent implements OnInit {
   islogged(): boolean {
     return localStorage.getItem('user') === 'null' ? false : true;
   }
+
 }

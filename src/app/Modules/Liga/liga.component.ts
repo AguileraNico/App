@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamsService } from 'src/app/Services/Teams/teams.service';
-import { ITeams } from 'src/app/Core/domain/teams/teams';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-liga',
@@ -8,17 +7,30 @@ import { ITeams } from 'src/app/Core/domain/teams/teams';
   styleUrls: ['./liga.component.scss']
 })
 export class LigaComponent implements OnInit {
-  teams: ITeams[];
+  activeId = '';
 
-  constructor(private service: TeamsService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    /*
-    this.service.getTeams().subscribe(value => {
-      this.teams = value;
-      console.log(this.teams);
-    })
-    */
+    this.addClass(this.router.url);
+  }
+
+  addClass(url: string): void {
+    switch (url) {
+      case '/liga/positions':
+        this.activeId = 'positions';
+        break;
+      case '/liga/fixture':
+        this.activeId = 'fixture';
+        break;
+      case '/liga/promedios':
+        this.activeId = 'promedios';
+        break;
+      case '/liga/teams':
+        this.activeId = 'teams';
+        break;
+
+    }
   }
 
 }

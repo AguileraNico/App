@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IFixture } from 'src/app/Core/domain/teams/liga';
 
 @Component({
   selector: 'app-table-fixture',
@@ -6,14 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./table-fixture.component.scss']
 })
 export class TableFixtureComponent implements OnInit {
-  keys: string[];
-  @Input() rows: any[];
+  @Input() headers: string[];
+  @Input() rows: IFixture[];
   @Input() editable: boolean;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    // tslint:disable-next-line: only-arrow-functions
-    this.keys = [...new Set<string>(this.rows.map( function(value) {return value.dia; }))];
   }
+
 }

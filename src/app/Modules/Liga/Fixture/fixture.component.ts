@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LigaService } from 'src/app/Services/Liga/liga.service';
+import { IFixture } from 'src/app/Core/domain/teams/liga';
 
 @Component({
   selector: 'app-fixture',
@@ -6,16 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fixture.component.scss']
 })
 export class FixtureComponent implements OnInit {
-  rows: any[] = [
-    {dia: '1', hora:'14:30', local:'Gimnasia y Esgrima La Plata', localGoal: null, visitorGoal: null, visitante:'boca'},
-    {dia: '1', hora:'14:30', local:'Gimna y Esgrima La Plata', localGoal: null, visitorGoal: null, visitante:'boca'},
-    {dia: '2', hora:'20:00', local:'River', localGoal: null, visitorGoal: null, visitante:'Racing'},
-  ];
+  headers: string[];
+  rows: IFixture[];
   editable = false;
+  selected = 'option2';
 
-  constructor() { }
+  constructor(private service: LigaService) {
+  }
 
   ngOnInit(): void {
+    this.service.getFixture(1).subscribe(value => {
+      this.rows = value;
+      this.headers = [...new Set<string>(value.map((header) => header.Day))];
+    });
   }
 
 }

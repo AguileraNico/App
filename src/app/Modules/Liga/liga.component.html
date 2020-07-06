@@ -1,13 +1,13 @@
 <div class="container row">
     <div class="col-4">
       <div class="list-group">
-        <button type="button" class="list-group-item list-group-item-action active" routerLink="positions">Posiciones</button>
-        <button type="button" class="list-group-item list-group-item-action" routerLink="fixture">Fixture</button>
-        <button type="button" class="list-group-item list-group-item-action" routerLink="promedios">Promedios</button>
-        <button type="button" class="list-group-item list-group-item-action" routerLink="teams">Equipos</button>
+        <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'positions' }" (click)="addClass('/liga/positions')" routerLink="positions">Posiciones</button>
+        <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'fixture' }" (click)="addClass('/liga/fixture')" routerLink="fixture">Fixture</button>
+        <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'promedios' }" (click)="addClass('/liga/promedios')" routerLink="promedios">Promedios</button>
+        <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'teams' }" (click)="addClass('/liga/teams')" routerLink="teams">Equipos</button>
       </div>
       </div>
-      <div class="col-8 container">
+      <div class="col-8 container content">
         <div class="tab-content row justify-content-md-center" id="nav-tabContent">
           <router-outlet></router-outlet>
         </div>

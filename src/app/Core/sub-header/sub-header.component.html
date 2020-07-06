@@ -4,10 +4,7 @@
       <button mat-button class="subHeader">Mis Pronosticos</button>
     </li>
     <li class="nav-item">
-      <button mat-button [matMenuTriggerFor]="menu"  class="subHeader">Ligas</button>
-      <mat-menu #menu="matMenu" yPosition="below">
-        <button mat-menu-item routerLink="/liga">Liga Argentina</button>
-      </mat-menu>
+      <button mat-button class="subHeader" routerLink="/liga">Super Liga</button>
     </li>
     <li class="nav-item">
       <button mat-button class="subHeader" routerLink="/results">Resultados</button>

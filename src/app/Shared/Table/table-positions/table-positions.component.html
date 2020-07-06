@@ -1,12 +1,14 @@
 <table class="table table-sm table-bordered">
-    <thead>
+    <thead class="thead-dark">
         <tr>
+            <th scope="col">#</th>
             <th scope="col" *ngFor="let item of headers">{{item.value}}</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of rows">
-            <td *ngFor="let key of keys">{{readProperties(row, key)}}</td>
+        <tr *ngFor="let row of rows;let i=index">
+            <td class="centered" [ngClass]="{'table-primary': i === 0}">{{i+1}}</td>
+            <td *ngFor="let key of keys" [ngClass]="{'centered': key !== 'Equipo', 'bolded': key === 'Pts' || key === 'Prom', 'table-primary': i === 0}">{{readProperties(row, key)}}</td>
         </tr>
     </tbody>
 </table>

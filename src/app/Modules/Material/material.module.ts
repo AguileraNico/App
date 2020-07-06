@@ -10,6 +10,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { MatTableModule } from '@angular/material/table';
     MatBadgeModule,
     MatCardModule,
     MatTableModule,
+    MatSelectModule,
     CommonModule
   ],
   exports: [
@@ -41,7 +43,8 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     MatBadgeModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

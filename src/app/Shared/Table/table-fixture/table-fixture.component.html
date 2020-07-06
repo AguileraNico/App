@@ -1,24 +1,24 @@
 <table class="table table-sm table-bordered">
-    <ng-container *ngFor="let key of keys">
-        <thead>
+    <ng-container *ngFor="let key of headers">
+        <thead class="thead-dark">
             <tr>
                 <th colspan="5">{{ key }}</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let row of rows">
-                <ng-container *ngIf="row.dia == key">
-                    <td>{{row.hora}}</td>
-                    <td>{{row.local}}</td>
+                <ng-container *ngIf="row.Day == key">
+                    <td>{{row.Hour}}</td>
+                    <td>{{row.Local}}</td>
                     <td *ngIf="editable" class="result">
-                        <input [(ngModel)]="row.localGoal" type="number" class="result">
+                        <input [(ngModel)]="row.LocalGoal" type="number" class="result">
                     </td>
                     <td *ngIf="editable" class="result">
-                        <input [(ngModel)]="row.visitorGoal" type="number" class="result">
+                        <input [(ngModel)]="row.VisitorGoal" type="number" class="result">
                     </td>
-                    <td *ngIf="!editable" class="resultReadonly">{{row.localGoal}}</td>
-                    <td *ngIf="!editable" class="resultReadonly">{{row.visitorGoal}}</td>
-                    <td>{{row.visitante}}</td>
+                    <td *ngIf="!editable" class="resultReadonly">{{row.LocalGoal}}</td>
+                    <td *ngIf="!editable" class="resultReadonly">{{row.VisitorGoal}}</td>
+                    <td>{{row.Visitor}}</td>
                 </ng-container>
             </tr>
         </tbody>
