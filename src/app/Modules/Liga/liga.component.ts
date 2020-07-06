@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-liga',
@@ -8,11 +8,15 @@ import { Router } from '@angular/router';
 })
 export class LigaComponent implements OnInit {
   activeId = '';
+  ligaCd: number;
+  divisionCd: number;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.addClass(this.router.url);
+    this.addClass('/liga/positions');
+    this.ligaCd = parseInt(this.route.snapshot.queryParams.liga);
+    this.divisionCd = parseInt(this.route.snapshot.queryParams.division);
   }
 
   addClass(url: string): void {
@@ -29,7 +33,6 @@ export class LigaComponent implements OnInit {
       case '/liga/teams':
         this.activeId = 'teams';
         break;
-
     }
   }
 

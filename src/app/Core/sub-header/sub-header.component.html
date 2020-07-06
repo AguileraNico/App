@@ -1,13 +1,13 @@
 <nav class="navbar navbar-dark bg-dark">
   <ul class="nav">
     <li class="nav-item" *ngIf="islogged()">
-      <button mat-button class="subHeader">Mis Pronosticos</button>
+      <button mat-button class="subHeader">Torneos</button>
     </li>
     <li class="nav-item">
-      <button mat-button class="subHeader" routerLink="/liga">Super Liga</button>
+      <button mat-button class="subHeader" routerLink="/prode">Prode</button>
     </li>
     <li class="nav-item">
-      <button mat-button class="subHeader" routerLink="/results">Resultados</button>
+      <button mat-button class="subHeader" routerLink="/liga" [queryParams]="{liga: 1, division: 1}">Super Liga</button>
     </li>
     <li class="nav-item">
       <button mat-button class="subHeader">Contacto</button>

@@ -34,3 +34,7 @@ export interface IPromedios {
     Pj: number;
     Dif: number;
 }
+
+export interface ILastRound {
+    RoundCd: number;
+}
