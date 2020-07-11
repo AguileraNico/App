@@ -3,13 +3,10 @@
     padding-bottom: 0px;
 }
 
-.subHeader {
-    color: white;
-    &:hover {
-        color: grey !important;
-    }
+ul {
+    border: 0px;
 }
 
-button:focus {
-    outline: none;
+a {
+    color: white;
 }

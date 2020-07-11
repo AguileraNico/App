@@ -1,6 +1,7 @@
-<div class="container row">
+<div class="container row contain">
     <div class="col-4">
       <div class="list-group">
+        <li class="list-group-item list-group-item-dark center"><strong>Super Liga Argentina</strong></li>
         <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'positions' }"
         (click)="addClass('/liga/positions')" routerLink="positions" [queryParams]="{liga: ligaCd, division: divisionCd}">Posiciones</button>
         <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'fixture' }"
@@ -13,7 +14,7 @@
         -->
       </div>
       </div>
-      <div class="col-8 container content">
+      <div class="col-8 container">
         <div class="tab-content row justify-content-md-center" id="nav-tabContent">
           <router-outlet></router-outlet>
         </div>

@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ITeams, IPositions, IFixture, IPromedios, ILastRound } from 'src/app/Core/domain/teams/liga';
+import { ITeams, IPositions, IFixture, IPromedios, ILastRound } from 'src/app/Core/domain/liga/liga';
 import { Observable } from 'rxjs';
-import { AuthService } from '../Auth/auth.service';
 import { TeamsLigaBody, TeamsDivisionBody, TeamsFixtureBody } from 'src/app/Core/body/teams.body';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LigaService {
-  headers: HttpHeaders;
+  protected headers: HttpHeaders;
 
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient) { }
 
   getTeams(division: number): Observable<ITeams[]> {
     const body = new TeamsDivisionBody(division);
@@ -55,7 +54,7 @@ export class LigaService {
     body, { headers: this.headers });
   }
 
-  getHeaders(): HttpHeaders {
+  protected getHeaders(): HttpHeaders {
     return new HttpHeaders()
     .set('Content-Type', 'application/json');
   }

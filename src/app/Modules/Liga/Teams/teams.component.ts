@@ -12,7 +12,7 @@ export class TeamsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getTeams(1).subscribe(value => {
-      console.log(value);
+      // tenemos los equipos para proximamente hacer estadisticas
     })
   }
 

@@ -11,6 +11,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatCardModule,
     MatTableModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
     CommonModule
   ],
   exports: [
@@ -44,7 +50,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatBadgeModule,
     MatCardModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

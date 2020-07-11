@@ -1,16 +1,35 @@
 <nav class="navbar navbar-dark bg-dark">
-  <ul class="nav">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': url === 'tournament' }"  routerLink="tournament">Torneos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': url == 'prode' }" routerLink="/prode">Prode</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': url == 'liga' }"
+      routerLink="/liga" [queryParams]="{liga: 1, division: 1}">Super Liga</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': url === 'contact' }" routerLink="/contact">Contacto</a>
+    </li>
+  </ul><!--
+  <ul class="nav nav-tabs">
     <li class="nav-item" *ngIf="islogged()">
-      <button mat-button class="subHeader">Torneos</button>
+      <button mat-button [ngClass]="{'active': activeId === 'tournament' }"
+      (click)="addClass('/torunament')" class="subHeader nav-link">Torneos</button>
     </li>
     <li class="nav-item">
-      <button mat-button class="subHeader" routerLink="/prode">Prode</button>
+      <button mat-button class="subHeader" role="tab" [ngClass]="{'active': activeId === 'prode' }"
+      (click)="addClass('/prode')" routerLink="/prode">Prode</button>
     </li>
     <li class="nav-item">
-      <button mat-button class="subHeader" routerLink="/liga" [queryParams]="{liga: 1, division: 1}">Super Liga</button>
+      <button mat-button class="subHeader" [ngClass]="{'active': activeId === 'liga' }"
+      (click)="addClass('/liga')" routerLink="/liga" [queryParams]="{liga: 1, division: 1}">Super Liga</button>
     </li>
     <li class="nav-item">
-      <button mat-button class="subHeader">Contacto</button>
+      <button mat-button [ngClass]="{'active': activeId === 'contacto' }"
+      (click)="addClass('/contacto')" class="subHeader">Contacto</button>
     </li>
-  </ul>
+  </ul>-->
 </nav> 

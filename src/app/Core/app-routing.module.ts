@@ -29,6 +29,15 @@ const routes: Routes = [
     canActivate: [LoggedService]
   },
   {
+    path: 'tournament',
+    loadChildren: () => import('../Modules/Tournament/tournament.module').then(mod => mod.TournamentModule),
+    canActivate: [LoggedService]
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('../Modules/Contact/contact.module').then(mod => mod.ContactModule)
+  },
+  {
     path: 'not-found',
     component: PageNotFoundComponent,
   },

@@ -17,6 +17,9 @@ export interface IPositions {
 }
 
 export interface IFixture {
+    MatchCd: number;
+    Editable: number;
+    DateTime: Date;
     Day: string;
     Hour: string;
     Local: string;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LigaService } from 'src/app/Services/Liga/liga.service';
-import { IPositions } from 'src/app/Core/domain/teams/liga';
+import { IPositions } from 'src/app/Core/domain/liga/liga';
 
 @Component({
   selector: 'app-positions',

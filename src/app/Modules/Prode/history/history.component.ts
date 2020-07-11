@@ -1,42 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { LigaService } from 'src/app/Services/Liga/liga.service';
 import { IFixture } from 'src/app/Core/domain/liga/liga';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-fixture',
-  templateUrl: './fixture.component.html',
-  styleUrls: ['./fixture.component.scss']
+  selector: 'app-history',
+  templateUrl: './history.component.html',
+  styleUrls: ['./history.component.scss']
 })
-export class FixtureComponent implements OnInit {
+export class HistoryComponent implements OnInit {
   headers: string[];
   rows: IFixture[];
   editable = false;
   selected: number;
   control: number;
-  ligaCd: number;
-  divisionCd: number;
 
-  constructor(private service: LigaService, private route: ActivatedRoute) {
-  }
+  constructor(private service: LigaService) { }
 
   ngOnInit(): void {
-    // tslint:disable-next-line: radix
-    this.ligaCd = parseInt(this.route.snapshot.queryParams.liga);
-    // tslint:disable-next-line: radix
-    this.divisionCd = parseInt(this.route.snapshot.queryParams.division);
-    this.service.getLastRoundFixture(this.ligaCd, this.divisionCd).subscribe(value => {
+    this.service.getLastRoundFixture(1, 1).subscribe(value => {
       this.rows = value;
       this.headers = [...new Set<string>(value.map((header) => header.Day))];
     });
-    this.service.getLastRound(this.ligaCd, this.divisionCd).subscribe(value => {
+    this.service.getLastRound(1, 1).subscribe(value => {
       this.control = value[0].RoundCd;
       this.selected = value[0].RoundCd;
     });
   }
 
   onChanges(event: any) {
-    this.service.getFixture(this.ligaCd, this.divisionCd, event).subscribe(value => {
+    this.service.getFixture(1, 1, event).subscribe(value => {
       this.rows = value;
       this.headers = [...new Set<string>(value.map((header) => header.Day))];
     });
@@ -59,4 +51,5 @@ export class FixtureComponent implements OnInit {
       this.onChanges(this.selected);
     }
   }
+
 }
