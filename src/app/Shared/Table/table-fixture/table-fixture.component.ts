@@ -21,7 +21,11 @@ export class TableFixtureComponent implements OnInit {
   autoSave(row: IFixture) {
     if (row.LocalGoal != null && row.VisitorGoal != null) {
       this.service.saveMatch(this.tournamentCd, row.MatchCd, row.LocalGoal, row.VisitorGoal)
-      .subscribe((res) => this.snackBar.open('Partido guardado exitosamente!', null, {duration: 2000}));
+      .subscribe((res) => {
+        if (res.code === undefined) {
+          this.snackBar.open('Partido guardado exitosamente!', null, {duration: 2000});
+        }
+      });
     }
   }
 
