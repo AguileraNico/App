@@ -1,7 +1,8 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { LigaService } from 'src/app/Services/Liga/liga.service';
-import { IFixture } from 'src/app/Core/domain/liga/liga';
+import { Component, OnInit } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { ProdeService } from 'src/app/Services/Prode/prode.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { IUserProde } from 'src/app/Core/domain/prode/prode';
 
 @Component({
   selector: 'app-prode-fixture',
@@ -11,40 +12,49 @@ import { interval, Subscription } from 'rxjs';
 export class ProdeFixtureComponent implements OnInit {
   subscription: Subscription;
   headers: string[];
-  rows: IFixture[];
-  date: Date;
+  rows: IUserProde[];
+  date: string;
   tournament = 1;
 
-  constructor(private service: LigaService) {
-    this.date = new Date();
+  constructor(private prodeService: ProdeService, private snackBar: MatSnackBar) {
+    this.date = new Date().toISOString();
   }
 
   ngOnInit(): void {
-    this.service.getLastRoundFixture(1, 1).subscribe(value => {
+    this.prodeService.getUserFixture(1, 1).subscribe(value => {
       this.rows = value;
       this.headers = [...new Set<string>(value.map((header) => header.Day))];
       this.rows.map(x => {
-        if (x.DateTime < this.date) {
+        if (new Date(x.DateTime).toISOString() < this.date) {
           x.Editable = 0; // este va en cero cuando termine de testear
         } else {
           x.Editable = 1;
         }
       });
     });
-    const source = interval(10000);
+    const source = interval(30000);
     this.subscription = source.subscribe(val => {
-      this.date = new Date();
+      this.date = new Date().toISOString();
       this.rows.map(x => {
-        console.log(x.DateTime < this.date)
-        if (x.DateTime < this.date) {
-          console.log(x)
+        if (new Date(x.DateTime).toISOString() < this.date) {
           x.Editable = 0; // este va en cero cuando termine de testear
         } else {
-          console.log(x)
           x.Editable = 1;
         }
       });
     });
+  }
+
+  autoSave(row: IUserProde) {
+      this.prodeService.saveMatch(this.tournament, row.MatchCd, row.LocalGoal, row.VisitorGoal)
+      .subscribe((res) => {
+        if (res.code === undefined) {
+          this.snackBar.open('Partido guardado exitosamente!', null, {duration: 2000});
+        } else {
+          this.snackBar.open('Error al guardar el partido!', null, {duration: 2000});
+          this.ngOnInit();
+        }
+      });
   }
 
 }

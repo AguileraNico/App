@@ -21,12 +21,12 @@ const routes: Routes = [
   },
   {
     path: 'prode',
-    loadChildren: () => import('../Modules/Prode/prode.module').then(mod => mod.ProdeModule)
+    loadChildren: () => import('../Modules/Prode/prode.module').then(mod => mod.ProdeModule),
+    canActivate: [LoggedService]
   },
   {
     path: 'liga',
-    loadChildren: () => import('../Modules/Liga/liga.module').then(mod => mod.LigaModule),
-    canActivate: [LoggedService]
+    loadChildren: () => import('../Modules/Liga/liga.module').then(mod => mod.LigaModule)
   },
   {
     path: 'tournament',

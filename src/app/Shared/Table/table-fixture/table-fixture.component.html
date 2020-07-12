@@ -6,7 +6,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let row of rows" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+            <tr *ngFor="let row of rows">
                 <ng-container *ngIf="row.Day == key">
                     <td>{{row.Hour}}</td>
                     <td>{{row.Local}}</td>

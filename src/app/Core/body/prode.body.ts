@@ -13,3 +13,15 @@ export class UserMatchBody {
         this.VisitorGoal = visitorGoal;
     }
 }
+
+export class TeamsUserProdeBody {
+    LigaCd: number;
+    DivisionCd: number;
+    UserCd: string;
+
+    constructor(liga: number, division: number, user: string) {
+        this.LigaCd = liga;
+        this.DivisionCd = division;
+        this.UserCd = user;
+    }
+}
