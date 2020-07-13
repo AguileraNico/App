@@ -52,7 +52,15 @@ export class AuthService {
   }
 
   async loginWithGoogle(){
-    await  this.afAuth.signInWithPopup(new auth.GoogleAuthProvider());
-    this.router.navigate(['admin/list']);
+    await this.afAuth.signInWithPopup(new auth.GoogleAuthProvider());
+    // this.router.navigate(['admin/list']);
+  }
+
+  async loginWithFacebook() {
+    return await this.afAuth.signInWithPopup(new auth.FacebookAuthProvider())
+  }
+
+  async loginWithTwitter() {
+    await this.afAuth.signInWithPopup(new auth.TwitterAuthProvider());
   }
 }

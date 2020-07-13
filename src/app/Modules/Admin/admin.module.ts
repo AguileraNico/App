@@ -9,6 +9,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { SharedModule } from 'src/app/Shared/shared.module';
 import { MaterialModule } from '../Material/material.module';
 import { ProfileComponent } from './Profile/profile.component';
+import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    SigninComponent
   ],
   imports: [
     CommonModule,

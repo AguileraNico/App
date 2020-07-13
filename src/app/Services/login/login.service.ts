@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/Modules/Admin/login/login.component';
 import { RegisterComponent } from 'src/app/Modules/Admin/register/register.component';
 import { AuthService } from '../Auth/auth.service';
+import { SigninComponent } from 'src/app/Modules/Admin/signin/signin.component';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,19 @@ export class LoginService {
       switch (result) {
         case false: {
           this.register();
+          break;
+        }
+        case undefined: break;
+      }
+    });
+  }
+
+  signIn() {
+    const dialogRef = this.dialog.open(SigninComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      switch (result) {
+        case false: {
+          this.login();
           break;
         }
         case undefined: break;

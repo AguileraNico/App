@@ -25,13 +25,13 @@ export class FixtureComponent implements OnInit {
     this.ligaCd = parseInt(this.route.snapshot.queryParams.liga);
     // tslint:disable-next-line: radix
     this.divisionCd = parseInt(this.route.snapshot.queryParams.division);
-    this.service.getLastRoundFixture(this.ligaCd, this.divisionCd).subscribe(value => {
-      this.rows = value;
-      this.headers = [...new Set<string>(value.map((header) => header.Day))];
-    });
     this.service.getLastRound(this.ligaCd, this.divisionCd).subscribe(value => {
       this.control = value[0].RoundCd;
       this.selected = value[0].RoundCd;
+    this.service.getFixture(this.ligaCd, this.divisionCd, value[0].RoundCd).subscribe(value => {
+      this.rows = value;
+      this.headers = [...new Set<string>(value.map((header) => header.Day))];
+    });
     });
   }
 

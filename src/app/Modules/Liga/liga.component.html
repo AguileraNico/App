@@ -3,11 +3,11 @@
       <div class="list-group">
         <li class="list-group-item list-group-item-dark center"><strong>Super Liga Argentina</strong></li>
         <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'positions' }"
-        (click)="addClass('/liga/positions')" routerLink="positions" [queryParams]="{liga: ligaCd, division: divisionCd}">Posiciones</button>
+        routerLink="positions" [queryParams]="{liga: ligaCd, division: divisionCd}">Posiciones</button>
         <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'fixture' }"
-        (click)="addClass('/liga/fixture')" routerLink="fixture" [queryParams]="{liga: ligaCd, division: divisionCd}">Fixture</button>
+        routerLink="fixture" [queryParams]="{liga: ligaCd, division: divisionCd}">Fixture</button>
         <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'promedios' }"
-        (click)="addClass('/liga/promedios')" routerLink="promedios" [queryParams]="{liga: ligaCd, division: divisionCd}">Promedios</button>
+        routerLink="promedios" [queryParams]="{liga: ligaCd, division: divisionCd}">Promedios</button>
         <!--
         <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'teams' }"
         (click)="addClass('/liga/teams')" routerLink="teams" [queryParams]="{liga: ligaCd, division: divisionCd}">Equipos</button>

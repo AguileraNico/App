@@ -21,12 +21,12 @@ export class ProdeFixtureComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.prodeService.getUserFixture(1, 1).subscribe(value => {
+    this.prodeService.getUserFixture(1, 1, 1).subscribe(value => {
       this.rows = value;
       this.headers = [...new Set<string>(value.map((header) => header.Day))];
       this.rows.map(x => {
         if (new Date(x.DateTime).toISOString() < this.date) {
-          x.Editable = 0; // este va en cero cuando termine de testear
+          x.Editable = 0;
         } else {
           x.Editable = 1;
         }
@@ -37,7 +37,7 @@ export class ProdeFixtureComponent implements OnInit {
       this.date = new Date().toISOString();
       this.rows.map(x => {
         if (new Date(x.DateTime).toISOString() < this.date) {
-          x.Editable = 0; // este va en cero cuando termine de testear
+          x.Editable = 0;
         } else {
           x.Editable = 1;
         }

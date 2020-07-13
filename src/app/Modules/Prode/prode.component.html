@@ -2,13 +2,13 @@
       <div class="col-4">
         <div class="list-group">
           <li class="list-group-item list-group-item-dark center"><strong>PRODE</strong></li>
-          <button type="button" class="list-group-item  list-group-item-action" [ngClass]="{'active': activeId === 'fixture' }"
-          (click)="addClass('/prode/fixture')" routerLink="fixture">Fixture</button>
-          <button type="button" class="list-group-item  list-group-item-action" [ngClass]="{'active': activeId === 'history' }"
-          (click)="addClass('/prode/history')" routerLink="history">Historial</button>
-          <button type="button" class="list-group-item  list-group-item-action" [ngClass]="{'active': activeId === 'positions' }"
-          (click)="addClass('/prode/positions')" routerLink="positions">Posiciones</button>
+          <button type="button" class="list-group-item  list-group-item-action"
+          [ngClass]="{'active': activeId === 'fixture' }" routerLink="fixture">Fixture</button>
+          <button type="button" class="list-group-item  list-group-item-action"
+          [ngClass]="{'active': activeId === 'history' }" routerLink="history">Historial</button>
           <!--
+          <button type="button" class="list-group-item  list-group-item-action"
+          [ngClass]="{'active': activeId === 'positions' }" routerLink="positions">Posiciones</button>
           <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': activeId === 'teams' }"
           (click)="addClass('/liga/teams')" routerLink="teams" [queryParams]="{liga: ligaCd, division: divisionCd}">Equipos</button>
           -->

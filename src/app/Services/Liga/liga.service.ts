@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ITeams, IPositions, IFixture, IPromedios, ILastRound } from 'src/app/Core/domain/liga/liga';
+import { ITeams, IPositions, IFixture, IPromedios, IRound } from 'src/app/Core/domain/liga/liga';
 import { Observable } from 'rxjs';
 import { TeamsLigaBody, TeamsDivisionBody, TeamsFixtureBody } from 'src/app/Core/body/teams.body';
 
@@ -33,17 +33,10 @@ export class LigaService {
     body, { headers: this.headers });
   }
 
-  getLastRoundFixture(Liga: number, division: number): Observable<IFixture[]> {
+  getLastRound(Liga: number, division: number): Observable<IRound> {
     const body = new TeamsLigaBody(Liga, division);
     this.headers = this.getHeaders();
-    return this.http.post<IFixture[]>('http://localhost:5001/apuestas-276210/us-east1/liga/last-round-fixture',
-    body, { headers: this.headers });
-  }
-
-  getLastRound(Liga: number, division: number): Observable<ILastRound> {
-    const body = new TeamsLigaBody(Liga, division);
-    this.headers = this.getHeaders();
-    return this.http.post<ILastRound>('http://localhost:5001/apuestas-276210/us-east1/liga/last-round',
+    return this.http.post<IRound>('http://localhost:5001/apuestas-276210/us-east1/liga/last-round',
     body, { headers: this.headers });
   }
 

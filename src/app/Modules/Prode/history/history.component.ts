@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LigaService } from 'src/app/Services/Liga/liga.service';
 import { IFixture } from 'src/app/Core/domain/liga/liga';
+import { ProdeService } from 'src/app/Services/Prode/prode.service';
 
 @Component({
   selector: 'app-history',
@@ -14,21 +15,23 @@ export class HistoryComponent implements OnInit {
   selected: number;
   control: number;
 
-  constructor(private service: LigaService) { }
+  constructor(private prodeService: ProdeService) { }
 
   ngOnInit(): void {
-    this.service.getLastRoundFixture(1, 1).subscribe(value => {
-      this.rows = value;
-      this.headers = [...new Set<string>(value.map((header) => header.Day))];
-    });
-    this.service.getLastRound(1, 1).subscribe(value => {
-      this.control = value[0].RoundCd;
-      this.selected = value[0].RoundCd;
+    this.prodeService.getUserRound(1, 1).subscribe(roundcd => {
+      if (roundcd === undefined) {
+        this.control = roundcd[0].RoundCd;
+        this.selected = roundcd[0].RoundCd;
+        this.prodeService.getUserFixture(1, 1, roundcd[0].RoundCd).subscribe(fixture => {
+          this.rows = fixture;
+          this.headers = [...new Set<string>(fixture.map((header) => header.Day))];
+        });
+      }
     });
   }
 
-  onChanges(event: any) {
-    this.service.getFixture(1, 1, event).subscribe(value => {
+  onChanges(event: number) {
+    this.prodeService.getUserFixture(1, 1, event).subscribe(value => {
       this.rows = value;
       this.headers = [...new Set<string>(value.map((header) => header.Day))];
     });

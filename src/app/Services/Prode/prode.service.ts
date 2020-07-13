@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { UserMatchBody, TeamsUserProdeBody } from 'src/app/Core/body/prode.body';
+import { UserMatchBody, TeamsUserProdeBody, UserHistoryBody } from 'src/app/Core/body/prode.body';
 import { AuthService } from '../Auth/auth.service';
 import { IUserProde } from 'src/app/Core/domain/prode/prode';
+import { IRound } from 'src/app/Core/domain/liga/liga';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,17 @@ export class ProdeService {
     body, { headers: this.headers });
   }
 
-  getUserFixture(Liga: number, division: number): Observable<IUserProde[]> {
-    const body = new TeamsUserProdeBody(Liga, division, JSON.parse(localStorage.user).uid);
+  getUserFixture(Liga: number, division: number, round: number): Observable<IUserProde[]> {
+    const body = new TeamsUserProdeBody(Liga, division, round, JSON.parse(localStorage.user).uid);
     this.headers = this.getHeaders();
     return this.http.post<IUserProde[]>('http://localhost:5001/apuestas-276210/us-east1/prode/user-fixture',
+    body, { headers: this.headers });
+  }
+
+  getUserRound(Liga: number, division: number): Observable<IRound[]> {
+    const body = new UserHistoryBody(Liga, division, JSON.parse(localStorage.user).uid);
+    this.headers = this.getHeaders();
+    return this.http.post<IRound[]>('http://localhost:5001/apuestas-276210/us-east1/prode/user-history',
     body, { headers: this.headers });
   }
 

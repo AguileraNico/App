@@ -17,6 +17,20 @@ export class UserMatchBody {
 export class TeamsUserProdeBody {
     LigaCd: number;
     DivisionCd: number;
+    RoundCd: number;
+    UserCd: string;
+
+    constructor(liga: number, division: number, round: number, user: string) {
+        this.LigaCd = liga;
+        this.DivisionCd = division;
+        this.RoundCd = round;
+        this.UserCd = user;
+    }
+}
+
+export class UserHistoryBody {
+    LigaCd: number;
+    DivisionCd: number;
     UserCd: string;
 
     constructor(liga: number, division: number, user: string) {

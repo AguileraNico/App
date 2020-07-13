@@ -1,0 +1,29 @@
+<h1 mat-dialog-title align="center">Iniciar Sesion</h1>
+<mat-dialog-content>
+    <mat-list role="list">
+        <mat-list-item role="listitem">
+            <button mat-raised-button class="btn btn-danger btn-block" [mat-dialog-close]="false">
+                <img src="../../../../assets/images/mail.svg"/>
+                Ingresar con Correo
+            </button>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+            <button mat-raised-button class="btn btn-block" (click)="login('Google')">
+                <img src="../../../../assets/images/google.svg"/>
+                Ingresar con Google
+            </button>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+            <button mat-raised-button color="primary" (click)="login('Facebook')">
+                <img src="../../../../assets/images/facebook.svg"/>
+                Ingresar con Facebook
+            </button>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+            <button mat-raised-button class="btn btn-block btn-primary" (click)="login('Twitter')">
+                <img src="../../../../assets/images/twitter.svg"/>
+                Ingresar con Twitter
+            </button>
+        </mat-list-item>
+      </mat-list>
+</mat-dialog-content>

@@ -11,7 +11,7 @@ export class LoggedService implements CanActivate {
 
   canActivate(): boolean {
     if (localStorage.user == 'null') {
-      this.login.login();
+      this.login.signIn();
       return false;
     } else {
       return true;

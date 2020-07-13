@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-prode',
@@ -9,7 +9,13 @@ import { Router } from '@angular/router';
 export class ProdeComponent implements OnInit {
   activeId = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.addClass(event.url);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.addClass(this.router.url);
