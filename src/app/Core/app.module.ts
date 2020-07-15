@@ -13,6 +13,7 @@ import { SharedModule } from '../Shared/shared.module';
 import { MaterialModule } from '../Modules/Material/material.module';
 import { SubHeaderComponent } from './sub-header/sub-header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFirestoreModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

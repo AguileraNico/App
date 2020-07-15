@@ -9,6 +9,8 @@ export class AppComponent {
 
   title = 'dpostando';
 
-  constructor() {}
+  constructor() {
+    console.log('nuevo deploy 4.0')
+  }
 
 }

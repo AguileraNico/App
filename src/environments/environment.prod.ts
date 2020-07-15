@@ -1,10 +1,11 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://us-east1-apuestas-276210.cloudfunctions.net'
 };
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAcMBl3lhoZgstS5lKapYe7PnkaYBFpYyM',
-  authDomain: 'apuestas-276210.firebaseapp.com',
+  authDomain: 'deportiva.net.ar',
   databaseURL: 'https://apuestas-276210.firebaseio.com',
   projectId: 'apuestas-276210',
   storageBucket: 'apuestas-276210.appspot.com',

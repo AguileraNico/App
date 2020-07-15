@@ -3,12 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'http://localhost:4000'
 };
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAcMBl3lhoZgstS5lKapYe7PnkaYBFpYyM',
-  authDomain: 'apuestas-276210.firebaseapp.com',
+  authDomain: 'deportiva.net.ar',
   databaseURL: 'https://apuestas-276210.firebaseio.com',
   projectId: 'apuestas-276210',
   storageBucket: 'apuestas-276210.appspot.com',

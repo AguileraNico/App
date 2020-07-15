@@ -21,7 +21,7 @@ export class AuthService {
       }
     });
   }
-
+  
   async login(email: string, password: string) {
     const result = await this.afAuth.signInWithEmailAndPassword(email, password);
     // this.router.navigate(['admin/list']);
@@ -52,15 +52,24 @@ export class AuthService {
   }
 
   async loginWithGoogle(){
-    await this.afAuth.signInWithPopup(new auth.GoogleAuthProvider());
+    const result = await this.afAuth.signInWithPopup(new auth.GoogleAuthProvider()
+    .setCustomParameters({
+      prompt: 'select_account'
+    }));
     // this.router.navigate(['admin/list']);
   }
 
   async loginWithFacebook() {
-    return await this.afAuth.signInWithPopup(new auth.FacebookAuthProvider())
+    const result = await this.afAuth.signInWithPopup(new auth.FacebookAuthProvider()
+    .setCustomParameters({
+      prompt: 'select_account'
+    }));
   }
 
   async loginWithTwitter() {
-    await this.afAuth.signInWithPopup(new auth.TwitterAuthProvider());
+    const result = await this.afAuth.signInWithPopup(new auth.TwitterAuthProvider()
+    .setCustomParameters({
+      prompt: 'select_account'
+    }));
   }
 }
