@@ -1,16 +1,23 @@
-<div class="col">
-    <div class="row space d-flex justify-content-between align-items-start">
-        <button mat-fab color="primary" (click)="previousRound()">
-            <mat-icon>arrow_back</mat-icon>
-        </button>
-        <mat-form-field appearance="outline">
-            <mat-select [(value)]="selected" (selectionChange)="onChanges($event.value)">
-                    <mat-option *ngFor="let f of array(control); let i = index" [value]="i+1">Fecha {{ i+1 }}</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <button mat-fab color="primary" (click)="nextRound()">
-            <mat-icon>arrow_forward</mat-icon>
-        </button>
+<ng-template *ngIf="rows.length != 0; then hasRows; else notRows"></ng-template>
+<ng-template #hasRows>
+    <div class="col">
+        <div class="row space d-flex justify-content-between align-items-start">
+            <button mat-fab color="primary" (click)="previousRound()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <mat-form-field appearance="outline">
+                <mat-select [(value)]="selected" (selectionChange)="onChanges($event.value)">
+                    <mat-option *ngFor="let f of array(control); let i = index" [value]="i+1">Fecha {{ i+1 }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-fab color="primary" (click)="nextRound()">
+                <mat-icon>arrow_forward</mat-icon>
+            </button>
+        </div>
     </div>
-</div>
-<app-table-fixture [rows]="rows" [editable]="editable" [headers]="headers"></app-table-fixture>
+    <app-table-fixture [rows]="rows" [editable]="editable" [headers]="headers"></app-table-fixture>
+</ng-template>
+<ng-template #notRows>
+    <mat-spinner></mat-spinner>
+</ng-template>

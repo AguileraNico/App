@@ -1,1 +1,7 @@
+<ng-template *ngIf="rows.length != 0; then hasRows; else notRows"></ng-template>
+<ng-template #hasRows>
 <app-table-positions [rows]="rows" [headers]="headers"></app-table-positions>
+</ng-template>
+<ng-template #notRows>
+    <mat-spinner></mat-spinner>
+</ng-template>

@@ -5,7 +5,7 @@ export const environment = {
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAcMBl3lhoZgstS5lKapYe7PnkaYBFpYyM',
-  authDomain: 'deportiva.net.ar',
+  authDomain: 'apuestas-276210.firebaseapp.com',
   databaseURL: 'https://apuestas-276210.firebaseio.com',
   projectId: 'apuestas-276210',
   storageBucket: 'apuestas-276210.appspot.com',

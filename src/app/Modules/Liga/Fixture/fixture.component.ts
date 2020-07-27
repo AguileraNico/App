@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LigaService } from 'src/app/Services/Liga/liga.service';
 import { IFixture } from 'src/app/Core/domain/liga/liga';
-import { ActivatedRoute } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-fixture',
@@ -10,36 +9,32 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FixtureComponent implements OnInit {
   headers: string[];
-  rows: IFixture[];
+  rows: IFixture[] = [];
   editable = false;
   selected: number;
   control: number;
   ligaCd: number;
   divisionCd: number;
 
-  constructor(private service: LigaService, private route: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    // tslint:disable-next-line: radix
-    this.ligaCd = parseInt(this.route.snapshot.queryParams.liga);
-    // tslint:disable-next-line: radix
-    this.divisionCd = parseInt(this.route.snapshot.queryParams.division);
-    this.service.getLastRound(this.ligaCd, this.divisionCd).subscribe(value => {
-      this.control = value[0].RoundCd;
-      this.selected = value[0].RoundCd;
-    this.service.getFixture(this.ligaCd, this.divisionCd, value[0].RoundCd).subscribe(value => {
-      this.rows = value;
-      this.headers = [...new Set<string>(value.map((header) => header.Day))];
-    });
-    });
+    firebase.database().ref('FechaActual').once('value', resp => {
+      this.selected = resp.val().Fecha;
+      this.control = resp.val().Control;
+      firebase.database().ref(`Fecha/${resp.val().Fecha}`).once('value', resp => {
+        this.rows = resp.val().filter(x => x.Dia != undefined);
+        this.headers = [...new Set<string>(this.rows.map((header) => header.Dia))];
+      })
+    })
   }
 
   onChanges(event: any) {
-    this.service.getFixture(this.ligaCd, this.divisionCd, event).subscribe(value => {
-      this.rows = value;
-      this.headers = [...new Set<string>(value.map((header) => header.Day))];
-    });
+    firebase.database().ref(`Fecha/${event}`).once('value', resp => {
+      this.rows = resp.val().filter(x => x.Dia != undefined);
+      this.headers = [...new Set<string>(this.rows.map((header) => header.Dia))];
+    })
   }
 
   array(i: number) {

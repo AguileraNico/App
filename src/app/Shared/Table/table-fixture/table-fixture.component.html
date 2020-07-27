@@ -7,18 +7,18 @@
         </thead>
         <tbody>
             <tr *ngFor="let row of rows">
-                <ng-container *ngIf="row.Day == key">
-                    <td>{{row.Hour}}</td>
+                <ng-container *ngIf="row.Dia == key">
+                    <td>{{row.Hora}}</td>
                     <td>{{row.Local}}</td>
                     <td *ngIf="row.Editable == 1" class="result">
-                        <input [(ngModel)]="row.LocalGoal" (change)="autoSave(row)" type="number" class="result">
+                        <input [(ngModel)]="row.LocalGol" (change)="autoSave(row)" type="number" class="result">
                     </td>
                     <td *ngIf="row.Editable == 1" class="result">
-                        <input [(ngModel)]="row.VisitorGoal" (change)="autoSave(row)" type="number" class="result">
+                        <input [(ngModel)]="row.VisitanteGol" (change)="autoSave(row)" type="number" class="result">
                     </td>
-                    <td *ngIf="row.Editable == 0" class="resultReadonly">{{row.LocalGoal}}</td>
-                    <td *ngIf="row.Editable == 0" class="resultReadonly">{{row.VisitorGoal}}</td>
-                    <td>{{row.Visitor}}</td>
+                    <td *ngIf="row.Editable == 0" class="resultReadonly">{{row.LocalGol}}</td>
+                    <td *ngIf="row.Editable == 0" class="resultReadonly">{{row.VisitanteGol}}</td>
+                    <td>{{row.Visitante}}</td>
                 </ng-container>
             </tr>
         </tbody>

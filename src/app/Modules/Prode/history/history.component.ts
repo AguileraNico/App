@@ -18,6 +18,7 @@ export class HistoryComponent implements OnInit {
   constructor(private prodeService: ProdeService) { }
 
   ngOnInit(): void {
+    /*
     this.prodeService.getUserRound(1, 1).subscribe(roundcd => {
       if (roundcd === undefined) {
         this.control = roundcd[0].RoundCd;
@@ -27,14 +28,15 @@ export class HistoryComponent implements OnInit {
           this.headers = [...new Set<string>(fixture.map((header) => header.Day))];
         });
       }
-    });
+    });*/
   }
 
   onChanges(event: number) {
+    /*
     this.prodeService.getUserFixture(1, 1, event).subscribe(value => {
       this.rows = value;
       this.headers = [...new Set<string>(value.map((header) => header.Day))];
-    });
+    });*/
   }
 
   array(i: number) {

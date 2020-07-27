@@ -1,1 +1,12 @@
-<app-table-fixture [rows]="rows" [headers]="headers" (save)="autoSave($event)"></app-table-fixture>
+<ng-template *ngIf="rows; then hasProde; else notProde"></ng-template>
+<ng-template #hasProde>
+    <app-table-fixture [rows]="rows" [headers]="headers" (save)="autoSave($event)"></app-table-fixture>
+</ng-template>
+<ng-template #notProde>
+    <div class="card text-center">
+        <div class="card-body">
+            <h1 class="card-title">¡Parece que no hay fixture para la liga aún!</h1>
+            <p>Descuida, nosotros le avisaremos cuando este disponible</p>
+        </div>
+    </div>
+</ng-template>

@@ -18,12 +18,12 @@ export interface IPositions {
 
 export interface IFixture {
     Editable: number;
-    Day: string;
-    Hour: string;
+    Dia: string;
+    Hora: string;
     Local: string;
-    LocalGoal: number;
-    VisitorGoal: number;
-    Visitor: string;
+    LocalGol: number;
+    VisitanteGol: number;
+    Visitante: string;
 }
 
 export interface IPromedios {

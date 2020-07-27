@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LigaService } from 'src/app/Services/Liga/liga.service';
 import { IPositions } from 'src/app/Core/domain/liga/liga';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-positions',
@@ -9,16 +9,20 @@ import { IPositions } from 'src/app/Core/domain/liga/liga';
 })
 export class PositionsComponent implements OnInit {
   headers: any = [{key: 'Equipo', value: 'Equipo'}, {key: 'Pts', value: 'Pts'},
-  {key: 'Pj', value: 'PJ'},{key: 'Pg', value: 'PG'}, {key: 'Pe', value: 'PE'},
-  {key: 'Pp', value: 'PP'}, {key: 'Gf', value: 'GF'}, {key: 'Gc', value: 'GC'}, {key: 'Dif', value: 'DIF'}];
-  rows: IPositions[];
+  {key: 'PJ', value: 'PJ'},{key: 'PG', value: 'PG'}, {key: 'PE', value: 'PE'},
+  {key: 'PP', value: 'PP'}, {key: 'GF', value: 'GF'}, {key: 'GC', value: 'GC'}, {key: 'DIF', value: 'DIF'}];
+  rows: IPositions[] = [];
   
-  constructor(private service: LigaService) { }
-
+  constructor() { }
+ 
   ngOnInit(): void {
-    this.service.getPositions(1).subscribe(value => {
-      this.rows = value;
-    })
+    this.getData();
+  }
+
+  private getData() {
+    firebase.database().ref('Posiciones').once('value', resp => {
+      this.rows = resp.val().filter(x => x.Equipo != undefined);
+    });
   }
 
 }

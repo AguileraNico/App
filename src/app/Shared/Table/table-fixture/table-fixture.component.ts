@@ -13,16 +13,17 @@ export class TableFixtureComponent implements OnInit {
   @Output() save: EventEmitter<IFixture>;
 
   constructor() {
-    this.save = new EventEmitter;
+    this.save = new EventEmitter();
   }
 
   ngOnInit(): void {
   }
 
-  autoSave(row:IFixture) {
+  autoSave(row: IFixture) {
+    /*
     if (row.LocalGoal != null && row.VisitorGoal != null) {
     this.save.emit(row);
-    }
+    }*/
   }
 
 }

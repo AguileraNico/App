@@ -4,7 +4,6 @@ import { ITeams, IPositions, IFixture, IPromedios, IRound } from 'src/app/Core/d
 import { Observable } from 'rxjs';
 import { TeamsLigaBody, TeamsDivisionBody, TeamsFixtureBody } from 'src/app/Core/body/teams.body';
 import { environment } from '../../../environments/environment';
-import {  } from '@angular/fire/angularfire2'
 import * as firebase from 'firebase';
 
 @Injectable({
@@ -23,16 +22,12 @@ export class LigaService {
     body, { headers: this.headers });
   }
 
-  getPositions(division: number): Observable<IPositions[]> {
-    const resp = firebase.database().ref('Posiciones');
-    resp.once('value').then(value => {
-      console.log(value.val())
-    })
-    console.log(resp)
+  getPositions(division: number) {
     const body = new TeamsDivisionBody(division);
     this.headers = this.getHeaders();
     return this.http.post<IPositions[]>(`${this.url}/liga/positions`,
     body, { headers: this.headers });
+
   }
 
   getFixture(liga: number, division: number, round: number): Observable<IFixture[]> {
@@ -56,8 +51,9 @@ export class LigaService {
     body, { headers: this.headers });
   }
 
-  protected getHeaders(): HttpHeaders {
+  protected getHeaders(): HttpHeaders { 
     return new HttpHeaders()
-    .set('Content-Type', 'application/json');
+    .set('Content-Type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*');
   }
 }

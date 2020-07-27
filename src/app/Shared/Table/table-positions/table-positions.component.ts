@@ -14,7 +14,6 @@ export class TablePositionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.keys = this.headers.map(x => x.key);
   }
 
   readProperties(obj, path): string {
